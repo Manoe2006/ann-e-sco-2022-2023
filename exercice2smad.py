@@ -1,3 +1,4 @@
+# Créé par ioana, le 17/10/2022 en Python 3.7
 A=[]
 def sml(A):
     # A=[]
@@ -55,8 +56,6 @@ def sml(A):
             for i in range(len(C)):
                 g=C[i]+C[i]
             print(g)
-sml(A=[2,7,9,8,6])
-
 
 
 
