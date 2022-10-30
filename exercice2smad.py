@@ -47,15 +47,6 @@ def sml(A):
 
             print("il y a des nombres paires")
 
-    # calcul de la somme des nombres impairs du tableau
-    for i in range(len(A)):
-        C=[]
-        if ((A[i]%2)!=0):
-            C.append(A[i])
-            print(C)
-            for i in range(len(C)):
-                g=C[i]+C[i]
-            print(g)
 
 
 
