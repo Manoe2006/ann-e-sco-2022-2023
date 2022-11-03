@@ -1,25 +1,24 @@
+from math import sqrt 
+
 # fonction qui determine avec les coordonnées un triangle rectangle inscrit dans un polygone
-def triang_rect(xA,yA,xB,yB,xE,yE):
-    from math import sqrt 
+def triang_rect(xA,yA,xB,yB,xC,yC):
+   
     
-    AB=int(sqrt(((xA-xB)**2)+((yA-yB)**2)))
-    AE=int(sqrt(((xA-xE)**2)+((yA-yE)**2)))
-    BE=int(sqrt(((xB-xE)**2)+((yB-yE)**2)))
-    print(AB)
-    print(AE)
-    print(BE)
+    AB=sqrt((xA-xB)**2+(yA-yB)**2)
+    AC=sqrt((xA-xC)**2+(yA-yC)**2)
+    BC=sqrt((xB-xC)**2+(yB-yC)**2)
     
-    if (AB**2)==(AE**2)+(BE**2):
+    if (int(AB**2))==(int(AC**2))+(int(BC**2)):
         print("triangle rectangle avec AB qui est le plus grand coté")
     
-    elif (AE**2)==(AB**2)+(BE**2):
+    elif (int(AC**2))==(int(AB**2))+(int(BC**2)):
         print("triangle rectangle avec AC qui est le plus grand coté")
     
-    elif (BE**2)==(AB**2)+(AE**2):
-        print("triangle rectangle avec BC qui est le plus grand coté")
+    elif (int(BC**2))==(int(AB**2))+(int(AC**2)):
+        print("il y a un triangle rectangle avec BC qui est le plus grand coté")
     
     else:
-        print("ce polygone n'a pas de triangle rectangle")
+        print("il n'y a pas de triangle rectangle")
 
     
     
