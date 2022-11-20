@@ -1,0 +1,1 @@
+'''Le Langage Naturel est le moyen de communication employés par les êtres humains de façon inné dans la vie quotidienne. L'anglais, l'espagnol et le français sont des exemples de langages naturels. Ils sont construits selon une syntaxe, une grammaire et peuvent contenir beaucoup d'ambiguïtés.'''

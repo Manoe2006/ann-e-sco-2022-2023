@@ -1,6 +1,4 @@
 # Créé par ioana, le 11/10/2022 en Python 3.7
-def img(a,b,c,x):
-    return a*x**2+b*x+c
 
 
 from math import sqrt
@@ -21,14 +19,20 @@ def sol(a,b,c):
         if disc >0:
             x1=(-b-sqrt(disc))/(2*a)
             x2=(-b+sqrt(disc))/(2*a)
+            print("disc>0")
             return (2,x1,x2)
 
         elif (disc==0):
             x3= -b/(2*a)
+            print("disc==0")
             return (1,x3,0)
 
         elif disc < 0:
+            print("disc<0")
             return (0,0,0)
+
+print(sol(1,17,4))
+
 
 
 

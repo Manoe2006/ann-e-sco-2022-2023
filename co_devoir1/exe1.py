@@ -1,0 +1,3 @@
+'''Un langage interprété est un langage qui est lu ligne par ligne par un interpréteur. L'interpréteur va passer à travers chaque ligne de votre code Python pour le traduire en langage machine (votre ordinateur ne sait pas exécuter du code Python directement, il a besoin de langage machine).'''
+'''Un langage compilé est un langage de programmation dont les implémentations sont généralement des compilateurs (traducteurs qui génèrent du code machine à partir du code source ), et non des interprètes (exécuteurs pas à pas du code source , où aucune traduction préalable à l'exécution n'a lieu).'''
+
