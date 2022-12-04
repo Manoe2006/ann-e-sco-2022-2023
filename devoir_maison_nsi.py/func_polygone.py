@@ -6,56 +6,58 @@ import numpy as np
 
 def carr(xA,yA,xB,yB,xC,yC,xD,yD):
      
+     
      AB=(xA-xB)**2+(yA-yB)**2
      AD=(xA-xD)**2+(yA-yB)**2
-     BC=(xB-xC)**2+(yC-yC)**2
+     BC=(xB-xC)**2+(yB-yC)**2
      DC=(xD-xC)**2+(yD-yC)**2
-     a = np.array([(xA-xB),(yA-yB)], int ) 
-     b = np.array([(xA-xD),(yD-yA)], int )
-     np.dot(a,b)
+     a = np.array([(xA-xB),(yA-yB)], float ) 
+     b = np.array([(xA-xD),(yD-yA)], float )
      
-     if ((AB==AD==BC==DC) and (np.dot(a,b)==0)):
-        return ("il y a  un carré")
+     
+     if ((AB==AD==BC==DC) and (np.dot(a,b))):
+        return {"Carré": True}
      
      else:
-        return ("il n'y pas de carré")
+        return {"Carré": False}
 
 ''' Fonction qui permet de determiner un carré dans un polygone '''
 
 def rec(xA,yA,xB,yB,xC,yC,xD,yD):
+
      AB=(xA-xB)**2+(yA-yB)**2
      AD=(xA-xD)**2+(yA-yB)**2
-     BC=(xB-xC)**2+(yC-yC)**2
+     BC=(xB-xC)**2+(yB-yC)**2
      DC=(xD-xC)**2+(yD-yC)**2
-     a = np.array([(xA-xB),(yA-yB)], int ) 
-     b = np.array([(xA-xD),(yD-yA)], int )
+     a = np.array([(xA-xB),(yA-yB)], float ) 
+     b = np.array([(xA-xD),(yD-yA)], float )
      
-     if ((AB==DC),(AD==BC) and (np.dot(a,b)==0)):
-        return("il y a un rectangle")
+     if ((AB==DC),(AD==BC) and (np.dot(a,b))):
+        return {"Rectangle": True}
 
      else:
-        return("il n'y a pas de rectangle")
+        return {"Rectangle": False}
 
 
 '''Fonction qui permet de determiner un triangle rectangle dans un polygone'''
-def triang_rect(A):
+def triang_rect(xA,yA,xB,yB,xC,yC):
     
     
-     AB=sqrt((A[0]-A[2])**2+(A[1]-A[3])**2)
-     AC=sqrt((A[0]-A[4])**2+(A[1]-A[5])**2)
-     BC=sqrt((A[2]-A[4])**2+(A[3]-A[5])**2)
+     AB=sqrt((xA-xB)**2+(yA-yB)**2)
+     AC=sqrt((xA-xC)**2+(yA-yC)**2)
+     BC=sqrt((xB-xC)**2+(yB-yC)**2)
     
      if (int(AB**2))==(int(AC**2))+(int(BC**2)):
-      return True,"AB est l'hypothénus"
+      return {"Triangle rectangle":True}
     
      elif (int(AC**2))==(int(AB**2))+(int(BC**2)):
-      return True,"AC est l'hypothénus"
+      return {"Triangle rectangle":True}
     
      elif (int(BC**2))==(int(AB**2))+(int(AC**2)):
-      return True
+      return {"Triangle rectangle":True}
     
      else:
-      return False
+      return {"Triangle rectangle":False}
 
 
 
@@ -64,14 +66,12 @@ def triang_rect(A):
 
 
 '''Fonction qui permet de dérterminer les différentes figures inclus dans un polygone'''
-def polygone(A): 
-    a=A[2],A[3],A[4],A[5],A[6],A[7],A[8],A[9]
-    b=A[2],A[3],A[0],A[1],A[8],A[9]
-    c=A[2],A[3],A[4],A[5],A[6],A[7],A[8],A[9]
+def polygone(xA,yA,xB,yB,xC,yC,xD,yD,xE,yE): 
+    print(carr(xB,yB,xC,yC,xD,yD,xE,yE))
+    print(rec(xB,yB,xC,yC,xD,yD,xE,yE))
+    print(triang_rect(xB,yB,xA,yA,xE,yE))
     
-    print(rec(a))
-    print(triang_rect(b))
     
 
-A=[0,0,0,2,3,2,3,0,7,2]
-polygone(A)
+
+polygone(0,0,0,2,3,2,3,0,7,2)
