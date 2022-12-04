@@ -21,7 +21,7 @@ def quad(xA,yA,xB,yB,xC,yC,xD,yD):
     print(np.dot(c,d))
     print(np.dot(a,b))
 
-    if quad(xA,yA,xB,yB,xC,yC,xD,yD):
+    if "bb":
       if (AB==AD==BC==DC):
         return {"Losange":True}
       else:
@@ -40,7 +40,7 @@ def quad(xA,yA,xB,yB,xC,yC,xD,yD):
         return {"rectangle":False}
     
     else:
-      return None
+      return {"Parallèlogramme":True}
       
       
    
