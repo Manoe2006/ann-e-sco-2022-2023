@@ -1,24 +1,24 @@
 from math import sqrt 
-import numpy as np 
+
 
 # fonction qui permet de determiner un carré dans un polygone
-def carr(xA,yA,xB,yB,xC,yC,xD,yD):
+def carr(A):
      
-     AB=(xA-xB)**2+(yA-yB)**2
-     AD=(xA-xD)**2+(yA-yB)**2
-     BC=(xB-xC)**2+(yC-yC)**2
-     DC=(xD-xC)**2+(yD-yC)**2
-     a = np.array([(xA-xB),(yA-yB)], int ) 
-     b = np.array([(xA-xD),(yA-yD)], int )
-     print(np.dot(a,b))
-     
-     if ((AB==AD==BC==DC) and  (np.dot(a,b))):
-        return True
-     
-     else:
-        return False 
+    AB=sqrt((A[2]-A[0])**2+(A[3]-A[1])**2)
+    AD=sqrt((A[6]-A[0])**2+(A[7]-A[1])**2)
+    BC=sqrt((A[4]-A[2])**2+(A[5]-A[3])**2)
+    DC=sqrt((A[4]-A[6])**2+(A[5]-A[7])**2)
+    VAB=A[2]-A[0],A[3]-A[1]
+    VAD=A[6]-A[0],A[7]-A[1]
+    VEC=VAB[0]*VAD[0]+VAB[1]*VAD[1]
 
-print(carr(1,1,2,1,1,0,2,0))
+    if ((AB==AD==BC==DC) and  (VEC==0)):
+        return {"Carré":True}
+     
+    else:
+        return {"Carré":False} 
+
+print(carr(A=(0,0,0,2,2,2,2,0)))
 
      
 
