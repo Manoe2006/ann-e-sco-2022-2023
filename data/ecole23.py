@@ -1,0 +1,6 @@
+f=open("Monfichier.txt","w")
+f.write("1;2\n")
+f.write("1;3\n")
+f.write("1;4\n")
+f.write("1;5\n")
+f.close() 

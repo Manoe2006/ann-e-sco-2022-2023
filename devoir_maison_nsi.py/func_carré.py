@@ -2,7 +2,9 @@ from math import sqrt
 
 
 # fonction qui permet de determiner un carré dans un polygone
-def carr(A):
+def quad(A):
+    B=[]
+    B=list.combination
      
     AB=sqrt((A[2]-A[0])**2+(A[3]-A[1])**2)
     AD=sqrt((A[6]-A[0])**2+(A[7]-A[1])**2)
@@ -18,7 +20,7 @@ def carr(A):
     else:
         return {"Carré":False} 
 
-print(carr(A=(0,0,0,2,2,2,2,0)))
+
 
      
 
