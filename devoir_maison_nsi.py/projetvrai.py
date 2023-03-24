@@ -59,7 +59,7 @@ def tri_rec(A):
     else:
         return {"Triangle rectangle": False}
 
-#def nuagedepts():
+def nuagedepts():
     Y=[]
     f=open("C:\\Users\\ioana\\Desktop\\nsi\\ann-e-sco-2022-2023\\devoir_maison_nsi.py\\mano_test.csv","r")
     lignes=f.readlines()
@@ -138,6 +138,7 @@ def browse_file():
 def analyze_points():
     file_path = file_path_label.cget("text")
     if file_path:
+        nuagedepts()
         polygone()
     else:
         result_label.config(text="Veuillez sélectionner un fichier CSV.")
