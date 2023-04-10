@@ -1,3 +1,4 @@
+# Créé par ioana, le 28/03/2023 en Python 3.7
 from itertools import combinations
 from math import sqrt
 import tkinter as tk
@@ -13,7 +14,7 @@ def distance(pt1, pt2):
 def est_carre(points):
     """Vérifie si les quatre points donnés forment un carré."""
     if len(set(tuple(pt) for pt in points)) != 4:
-        return False  # Ignorer les carrés avec des points confondus
+        raise ValueError("Les points ne forment pas un carré : certains sont confondus.")
 
     AB = distance(points[0], points[1])
     BC = distance(points[1], points[2])
@@ -155,27 +156,22 @@ def main():
     window = tk.Tk()
     window.title("Analyse de nuages de points")
 
-    # Configure le style
-    style = ttk.Style()
-    style.configure("TLabel", font=("Arial", 14))
-    style.configure("TButton", font=("Arial", 14))
-
-    title_label = ttk.Label(window, text="Analyse de nuages de points", font=("Arial", 16))
+    title_label = tk.Label(window, text="Analyse de nuages de points", font=("Arial", 16))
     title_label.pack(pady=10)
 
-    browse_button = ttk.Button(window, text="Parcourir", command=browse_file)
+    browse_button = tk.Button(window, text="Parcourir", command=browse_file)
     browse_button.pack(pady=10)
 
-    file_path_label = ttk.Label(window, text="", wraplength=400)
+    file_path_label = tk.Label(window, text="", wraplength=400)
     file_path_label.pack(pady=10)
 
-    analyze_button = ttk.Button(window, text="Analyser les points", command=analyze_points)
+    analyze_button = tk.Button(window, text="Analyser les points", command=analyze_points)
     analyze_button.pack(pady=10)
 
-    result_label = ttk.Label(window, text="", wraplength=400)
+    result_label = tk.Label(window, text="", wraplength=400)
     result_label.pack(pady=10)
 
-    quit_button = ttk.Button(window, text="Quitter", command=window.quit)
+    quit_button = tk.Button(window, text="Quitter", command=window.quit)
     quit_button.pack(pady=10)
 
     window.mainloop()
