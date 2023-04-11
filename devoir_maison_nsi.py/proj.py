@@ -46,6 +46,32 @@ def est_rectangle(points):
     else:
         return False
 
+# Fonction pour vérifier si quatre points donnés forment un losange
+def est_losange(points):
+    """Vérifie si les quatre points donnés forment un losange."""
+    if len(set(tuple(pt) for pt in points)) != 4:
+        return False  # Ignorer les losanges avec des points confondus
+
+    dist = [distance(points[i], points[(i + 1) % 4]) for i in range(4)]
+
+    if len(set( dist)) == 1:
+        return True
+    else:
+        return False
+
+# Fonction pour vérifier si quatre points donnés forment un parallélogramme
+def est_parallelogramme(points):
+    """Vérifie si les quatre points donnés forment un parallélogramme."""
+    if len(set(tuple(pt) for pt in points)) != 4:
+        return False  # Ignorer les parallélogrammes avec des points confondus
+
+    dist= [distance(points[i], points[(i + 1) % 4]) for i in range(4)]
+
+    if  dist[0] ==  dist[2] and  dist[1] ==  dist[3]:
+        return True
+    else:
+        return False
+
 # Fonction pour vérifier si trois points donnés forment un triangle rectangle
 def est_triangle_rectangle(points):
     """Vérifie si les trois points donnés forment un triangle rectangle."""
@@ -56,10 +82,35 @@ def est_triangle_rectangle(points):
     def distance(pt1, pt2):
         return ((pt1[0] - pt2[0])**2 + (pt1[1] - pt2[1])**2)
 
-    cotes = [distance(points[0], points[1]), distance(points[1], points[2]), distance(points[0], points[2])]
-    cotes.sort()
+    dist = [distance(points[0], points[1]), distance(points[1], points[2]), distance(points[0], points[2])]
+    dist.sort()
 
-    if cotes[0] + cotes[1] == cotes[2]:
+    if dist[0] + dist[1] == dist[2]:
+        return True
+    else:
+        return False
+
+def est_triangle_equilateral(points):
+    """Vérifie si les trois points donnés forment un triangle équilatéral."""
+    if len(set(tuple(pt) for pt in points)) != 3:
+        return False  # Ignorer les triangles avec des points confondus
+
+    dist = [distance(points[i], points[(i + 1) % 3]) for i in range(3)]
+
+    if len(set(dist)) == 1:
+        return True
+    else:
+        return False
+
+# Fonction pour vérifier si trois points donnés forment un triangle isocèle
+def est_triangle_isoscele(points):
+    """Vérifie si les trois points donnés forment un triangle isocèle."""
+    if len(set(tuple(pt) for pt in points)) != 3:
+        return False  # Ignorer les triangles avec des points confondus
+
+    dist = [distance(points[i], points[(i + 1) % 3]) for i in range(3)]
+
+    if len(set(dist)) == 2:
         return True
     else:
         return False
@@ -103,6 +154,18 @@ def polygone(shape_function):
     elif shape_function == est_triangle_rectangle:
         n_shapes = list(combinations(Z, 3))
         shape_name = "Triangle(s) rectangle(s)"
+    elif shape_function == est_losange:
+        n_shapes = list(combinations(Z, 4))
+        shape_name = "Losange(s)"
+    elif shape_function == est_parallelogramme:
+        n_shapes = list(combinations(Z, 4))
+        shape_name = "Parallélogramme(s)"
+    elif shape_function == est_triangle_equilateral:
+        n_shapes = list(combinations(Z, 3))
+        shape_name = "Triangle(s) équilatéral(s)"
+    elif shape_function == est_triangle_isoscele:
+        n_shapes = list(combinations(Z, 3))
+        shape_name = "Triangle(s) isocèle(s)"
 
     for combination in n_shapes:
         if shape_function(combination):
@@ -117,16 +180,13 @@ def polygone(shape_function):
     plt.show()
 
 
+
 # Import des bibliothèques pour l'interface graphique
 import tkinter
 import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog
 from ttkthemes import ThemedTk
-from tkinter import PhotoImage
-
-
-
 
 # Fonction pour ouvrir un explorateur de fichiers et sélectionner un fichier CSV
 def browse_file():
@@ -147,9 +207,18 @@ def analyze_points():
             polygone(est_rectangle)
         elif shape == "Triangle rectangle":
             polygone(est_triangle_rectangle)
+        elif shape == "Losange":
+            polygone(est_losange)
+        elif shape == "Parallélogramme":
+            polygone(est_parallelogramme)
+        elif shape == "Triangle équilatéral":
+            polygone(est_triangle_equilateral)
+        elif shape == "Triangle isocèle":
+            polygone(est_triangle_isoscele)
     else:
         result_label.config(text="Veuillez sélectionner un fichier CSV.")
 
+# Fonction principale pour créer l'interface graphique et gérer les formes
 # Fonction principale pour créer l'interface graphique et gérer les formes
 def main():
     global file_path_label, result_label, shape_var
@@ -177,7 +246,7 @@ def main():
 
     shape_var = tk.StringVar()
     shape_var.set("Nuage de points")
-    shape_options = ["Nuage de points", "Carré", "Rectangle", "Triangle rectangle"]
+    shape_options = ["Nuage de points", "Carré", "Rectangle", "Triangle rectangle", "Losange", "Parallélogramme", "Triangle équilatéral", "Triangle isocèle"]
 
     shape_menu = ttk.OptionMenu(window, shape_var, *shape_options)
     shape_menu.pack(pady=10)

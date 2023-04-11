@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 #programme principal avec le fichier et les minis focntions y compris
 def princip(figure):
     V=[]
-    f=open("C:\\Users\\LENOVO\\Documents\\tester.csv","r")
+    f=open("C:\\Users\\ioana\\Desktop\\nsi\\ann-e-sco-2022-2023\\devoir_maison_nsi.py\\mano_test.csv","r")
     lignes=f.readlines()
     P=[]
     B=[]
@@ -233,7 +233,7 @@ def losange(B):
     E=list(combinations(B,4))
     for i in range(len(E)):
         if (((E[i][0][0]),(E[i][0][1])) != ((E[i][1][0]), (E[i][1][1])) != ((E[i][2][0]), (E[i][2][1])) != (
-        (E[i][3][0]), (E[i][3][1])) != ((E[i][0][0]), (A[i][0][1]))):
+        (E[i][3][0]), (E[i][3][1])) != ((E[i][0][0]), (E[i][0][1]))):
         #Les distances
             AB=sqrt((E[i][1][0]-E[i][0][0])**2+(E[i][1][1]-E[i][0][1])**2)
             AD=sqrt((E[i][3][0]-E[i][0][0])**2+(E[i][3][1]-E[i][0][1])**2)
@@ -256,13 +256,15 @@ def losange(B):
             for i in range (len(E)):
                 if (((E[i][0][0]),(E[i][0][1])) != ((E[i][1][0]), (E[i][1][1])) != ((E[i][2][0]), (E[i][2][1])) != (
         (E[i][3][0]), (E[i][3][1])) != ((E[i][0][0]), (E[i][0][1]))):
-                 if (AC*2+BD*2)==2(AB*2+BC*2) and ((BE)!=(AE)) and (k!=0):
-                    v=v+1
-                    x=[E[i][0][0],E[i][1][0],E[i][2][0],E[i][3][0],E[i][0][0]]
-                    y=[E[i][0][1],E[i][1][1],E[i][2][1],E[i][3][1],E[i][0][1]]
-                    plt.plot(x,y)
-                    plt.xlabel("X")
-                    plt.ylabel("Y")
-                    plt.title("Tous les losanges")
+                    if (AC**2+BD**2)==2*(AB**2+BC**2) and ((BE)!=(AE)) and (k!=0):
+                        v=v+1
+                        x=[E[i][0][0],E[i][1][0],E[i][2][0],E[i][3][0],E[i][0][0]]
+                        y=[E[i][0][1],E[i][1][1],E[i][2][1],E[i][3][1],E[i][0][1]]
+                        plt.plot(x,y)
+                        plt.xlabel("X")
+                        plt.ylabel("Y")
+                        plt.title("Tous les losanges")
         print("Il y'a",v," losange")
-        plt.show()
+        plt.show() 
+
+princip(losange)
